@@ -1,4 +1,9 @@
 import requests
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+apiKey = os.getenv("API_KEY")
 
 # Documentation: https://developers.google.com/speed/docs/insights/v5/get-started
 
