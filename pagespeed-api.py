@@ -6,6 +6,9 @@ from dataparse import parseData
 load_dotenv()
 apiKey = os.getenv("API_KEY")
 
+script_dir = os.path.dirname(os.path.realpath(__file__))
+os.chdir(script_dir)
+
 # Documentation: https://developers.google.com/speed/docs/insights/v5/get-started
 
 # JSON paths: https://developers.google.com/speed/docs/insights/v4/reference/pagespeedapi/runpagespeed
@@ -27,8 +30,8 @@ if not os.path.exists(filename):
 
 
 # Populate 'pagespeed.txt' file with URLs to query against API.
-with open('pagespeed.txt') as pagespeedurls:
-    download_dir = 'pagespeed-results-mobile.csv'
+with open('./pagespeed.txt') as pagespeedurls:
+    download_dir = './pagespeed-results-mobile.csv'
     file = open(download_dir, 'a')
     content = pagespeedurls.readlines()
     content = [line.rstrip('\n') for line in content]
