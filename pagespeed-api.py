@@ -11,14 +11,14 @@ apiKey = os.getenv("API_KEY")
 # JSON paths: https://developers.google.com/speed/docs/insights/v4/reference/pagespeedapi/runpagespeed
 
 def printMetrics(metricNames):
-    l = ''
+    l=''
     for metric in metricNames:
-        names = [f'{metric}-percentile', f'{metric}-good', f'{metric}-needsImprov', f'{metric}-bad']
-        l += ','.join(names)
+        names = [f'{metric}', f'{metric}-good', f'{metric}-needsImprov', f'{metric}-bad']
+        l += ','.join(names)+','
     return l
 
 filename = 'pagespeed-results-mobile.csv'
-metricNames= ["CLS", "LCP", "FID", "FCP", "TTFB", "fid"]
+metricNames= ["CLS", "LCP","INP", "FID", "FCP", "TTFB"]
 columnTitleRow = f'URL,analysisUTCTimestamp,{printMetrics(metricNames)}\n'
 
 if not os.path.exists(filename):
